@@ -33,3 +33,32 @@ RUN apt-get update -qq && apt-get install -qqy wget curl git iptables ca-certifi
 RUN echo deb http://pkg.jenkins-ci.org/debian binary/ >> /etc/apt/sources.list \
     && wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
 RUN apt-get update -qq && apt-get install -qqy jenkins
+
+RUN apt-get update && apt-get install -qy \
+  git \
+  build-essential \
+  libssl-dev \
+  libreadline-dev \
+  zlib1g-dev \
+  libpq-dev \
+  imagemagick \
+  libmagickwand-dev \
+  cmake \
+  nodejs \
+  curl \
+  aspell \
+  aspell-en \
+  wget \
+  gzip
+
+RUN cd /tmp && \
+  git clone https://github.com/sstephenson/ruby-build.git && \
+  cd ruby-build && \
+  ./install.sh && \
+  ruby-build 2.2.3 /opt/ruby/2.2.3 && \
+  rm -rf /tmp/ruby-build*
+
+ENV PATH=$PATH:/opt/ruby/2.2.3/bin
+
+RUN gem update --system && \
+    gem install bundler
