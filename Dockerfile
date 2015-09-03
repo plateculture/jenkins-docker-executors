@@ -21,7 +21,7 @@ ADD docker-wrapper.sh /usr/local/bin/docker-wrapper
 
 # now we install docker in docker - thanks to https://github.com/jpetazzo/dind
 # We install newest docker into our docker in docker container
-ADD https://get.docker.io/builds/Linux/x86_64/docker-1.7.1 /usr/local/bin/docker
+ADD https://get.docker.io/builds/Linux/x86_64/docker-1.6.2 /usr/local/bin/docker
 RUN chmod +x /usr/local/bin/docker
 
 # for installing docker related files first
