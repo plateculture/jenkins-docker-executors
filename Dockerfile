@@ -55,10 +55,10 @@ RUN cd /tmp && \
   git clone https://github.com/sstephenson/ruby-build.git && \
   cd ruby-build && \
   ./install.sh && \
-  ruby-build 2.2.3 /opt/ruby/2.2.3 && \
+  ruby-build 2.3.0 /opt/ruby/2.3.0 && \
   rm -rf /tmp/ruby-build*
 
-ENV PATH=$PATH:/opt/ruby/2.2.3/bin
+ENV PATH=$PATH:/opt/ruby/2.3.0/bin
 
 RUN gem update --system && \
     gem install bundler
