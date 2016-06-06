@@ -49,16 +49,17 @@ RUN apt-get update && apt-get install -qy \
   aspell \
   aspell-en \
   wget \
-  gzip
+  gzip \
+  libgeos-dev
 
 RUN cd /tmp && \
   git clone https://github.com/sstephenson/ruby-build.git && \
   cd ruby-build && \
   ./install.sh && \
-  ruby-build 2.3.0 /opt/ruby/2.3.0 && \
+  ruby-build 2.3.1 /opt/ruby/2.3.1 && \
   rm -rf /tmp/ruby-build*
 
-ENV PATH=$PATH:/opt/ruby/2.3.0/bin
+ENV PATH=$PATH:/opt/ruby/2.3.1/bin
 
 RUN gem update --system && \
     gem install bundler
